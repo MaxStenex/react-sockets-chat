@@ -1,0 +1,17 @@
+@import "./_normalize";
+
+@import "./components/Sidebar.scss";
+@import "./components/SearchPanel.scss";
+@import "./components/LastMessages.scss";
+@import "./components/ChatRoom.scss";
+
+body {
+  font-family: sans-serif;
+}
+
+.page {
+  display: flex;
+  &__main {
+    flex: 1;
+  }
+}
