@@ -1,20 +1,12 @@
-import SearchPanelButtons from "../components/chat/SearchPanelButtons";
-import LastMessages from "../components/chat/LastMessages";
-import SearchPanelInput from "../components/chat/SearchPanelInput";
-import SearchPanel from "../components/shared/SearchPanel";
 import Sidebar from "../components/shared/Sidebar";
 import ChatRoom from "../components/chat/ChatRoom";
+import ChatsPanel from "../components/chat/ChatsPanel";
 
 const Chat = () => {
   return (
-    <div className="page">
+    <div className="page page--with-sidebar">
       <Sidebar />
-      <SearchPanel
-        title="Chats"
-        buttons={<SearchPanelButtons />}
-        input={<SearchPanelInput />}
-        main={<LastMessages />}
-      />
+      <ChatsPanel />
       <div className="page__main">
         <ChatRoom />
       </div>

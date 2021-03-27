@@ -1,7 +1,8 @@
 .search-panel {
-  min-height: 100vh;
+  height: 100vh;
   border-right: 1px solid #ccc;
   width: 350px;
+  overflow-y: auto;
   &__title {
     font-weight: 700;
     margin-right: 20px;
@@ -15,10 +16,10 @@
       margin-bottom: 35px;
     }
   }
-  &__actions {
+  &__buttons {
     display: flex;
   }
-  &__action-button {
+  &__button {
     width: 46px;
     height: 36px;
     padding: 10px 13px;

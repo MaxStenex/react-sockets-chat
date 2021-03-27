@@ -5,11 +5,18 @@
 @import "./components/LastMessages.scss";
 @import "./components/ChatRoom.scss";
 
+$sidebarWidth: 100px;
+
 body {
   font-family: sans-serif;
 }
 
 .page {
+  &--with-sidebar {
+    & .search-panel {
+      margin-left: $sidebarWidth;
+    }
+  }
   display: flex;
   &__main {
     flex: 1;
