@@ -74,15 +74,7 @@
   }
   &__input {
     flex: 1;
-    padding: 7px 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    font-size: 14px;
     margin-right: 10px;
-    &:focus {
-      border: 1px solid blue;
-      transition: 0.3s ease-in-out;
-    }
   }
   &__send-message {
     width: 35px;

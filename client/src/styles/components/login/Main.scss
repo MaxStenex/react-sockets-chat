@@ -1,0 +1,15 @@
+.login {
+  width: 100%;
+  &__remember-me {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    & input {
+      margin-right: 5px;
+    }
+    & label {
+      user-select: none;
+      font-size: 14px;
+    }
+  }
+}

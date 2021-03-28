@@ -40,14 +40,6 @@
   }
   &__input {
     width: 100%;
-    border-radius: 5px;
-    border: 1px solid #ccc;
-    padding: 10px;
-    font-size: 14px;
-    &:focus {
-      border: 1px solid blue;
-      transition: 0.3s ease-in-out;
-    }
   }
   &__main {
   }

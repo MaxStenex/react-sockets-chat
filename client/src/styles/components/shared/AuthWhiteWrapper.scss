@@ -1,0 +1,80 @@
+.auth {
+  max-width: 430px;
+  margin: 100px auto;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  position: relative;
+  &__logo {
+    width: 85px;
+    position: absolute;
+    background-color: #fff;
+    top: -43px;
+    padding: 15px;
+    font-weight: 500;
+  }
+  &__title {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 35px;
+  }
+  &__footer {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    & h3 {
+      color: #757581;
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    & a {
+      text-decoration: none;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      padding: 5px 10px;
+      font-size: 14px;
+      color: #000;
+      &:hover,
+      &:focus {
+        transition: 0.3s;
+        background-color: #ccc;
+      }
+    }
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 30px;
+  }
+  &__field {
+    margin-bottom: 20px;
+  }
+  &__input {
+    width: 100%;
+    padding: 8px 15px;
+    margin-bottom: 5px;
+  }
+  &__error {
+    color: red;
+    font-size: 14px;
+    margin-left: 3px;
+  }
+  &__submit {
+    padding: 7px 10px;
+    background-color: #0a80ff;
+    color: #fff;
+    font-size: 15px;
+    border-radius: 5px;
+    font-weight: 500;
+    &:hover,
+    &:focus {
+      background-color: #0063cc;
+      transition: 0.3s;
+    }
+  }
+}

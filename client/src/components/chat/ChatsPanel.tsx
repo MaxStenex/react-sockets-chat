@@ -4,7 +4,7 @@ import Button from "../shared/SearchPanel/Button";
 import Buttons from "../shared/SearchPanel/Buttons";
 import AddSvg from "../../images/add.svg";
 import LastMessages from "./LastMessages";
-import Input from "../shared/SearchPanel/Input";
+import DefaultInput from "../shared/DefaultInput";
 
 const ChatsPanel = () => {
   return (
@@ -16,7 +16,13 @@ const ChatsPanel = () => {
           <Button src={AddSvg} />
         </Buttons>
       }
-      input={<Input placeholder="Search messages..." />}
+      input={
+        <DefaultInput
+          placeholder="Search messages..."
+          className="search-panel__input"
+          type="text"
+        />
+      }
       main={<LastMessages />}
     />
   );

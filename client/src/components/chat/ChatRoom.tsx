@@ -1,6 +1,7 @@
 import DefaultUserImage from "../../images/defaultUserImage.png";
 import AddSvg from "../../images/add.svg";
 import SendMessageSvg from "../../images/send.svg";
+import DefaultInput from "../shared/DefaultInput";
 
 const ChatRoom = () => {
   return (
@@ -41,7 +42,7 @@ const ChatRoom = () => {
         </ul>
       </div>
       <footer className="chat-room__footer">
-        <input
+        <DefaultInput
           placeholder="Write a message..."
           type="text"
           className="chat-room__input"

@@ -1,14 +1,17 @@
 @import "./_normalize";
+@import "./_variables";
 
-@import "./components/Sidebar.scss";
-@import "./components/SearchPanel.scss";
-@import "./components/LastMessages.scss";
-@import "./components/ChatRoom.scss";
-
-$sidebarWidth: 100px;
+@import "./components/shared/Sidebar.scss";
+@import "./components/shared/SearchPanel.scss";
+@import "./components/chat/LastMessages.scss";
+@import "./components/chat/ChatRoom.scss";
+@import "./components/shared/DefaultInput.scss";
+@import "./components/shared/AuthWhiteWrapper.scss";
+@import "./components/login/Main.scss";
+@import "./components/register/Main.scss";
 
 body {
-  font-family: sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .page {
