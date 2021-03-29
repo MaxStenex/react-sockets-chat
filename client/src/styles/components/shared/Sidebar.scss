@@ -5,9 +5,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  position: fixed;
   overflow-y: auto;
   background-color: #fff;
+
   &__main {
     display: flex;
     flex-direction: column;
@@ -30,9 +30,13 @@
       width: 80%;
     }
   }
+  &__options {
+    position: absolute;
+    transform: translate(10px, -100%);
+  }
   &__user-photo {
     & img {
-      width: 100%;
+      width: 80%;
     }
   }
 }
@@ -48,14 +52,16 @@
     justify-content: center;
     & a {
       width: 100%;
-      padding: 10px 20px;
-      margin-bottom: 10px;
+      padding: 13px 20px;
+      margin-bottom: 15px;
       border-radius: 15px;
+      display: flex;
+      justify-content: center;
       &.selected-link {
         background-color: rgb(233, 233, 233);
       }
       & img {
-        max-width: 100%;
+        max-width: 80%;
       }
     }
   }

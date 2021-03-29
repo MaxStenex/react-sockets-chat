@@ -9,17 +9,13 @@
 @import "./components/shared/AuthWhiteWrapper.scss";
 @import "./components/login/Main.scss";
 @import "./components/register/Main.scss";
+@import "./components/shared/Options.scss";
 
 body {
   font-family: "Roboto", sans-serif;
 }
 
 .page {
-  &--with-sidebar {
-    & .search-panel {
-      margin-left: $sidebarWidth;
-    }
-  }
   display: flex;
   &__main {
     flex: 1;

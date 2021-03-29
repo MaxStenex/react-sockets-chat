@@ -63,6 +63,9 @@
     color: red;
     font-size: 14px;
     margin-left: 3px;
+    &--login {
+      margin-top: 10px;
+    }
   }
   &__submit {
     padding: 7px 10px;
@@ -75,6 +78,9 @@
     &:focus {
       background-color: #0063cc;
       transition: 0.3s;
+    }
+    &:disabled {
+      background: rgb(199, 199, 199);
     }
   }
 }

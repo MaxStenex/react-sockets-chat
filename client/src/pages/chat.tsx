@@ -4,7 +4,7 @@ import ChatsPanel from "../components/chat/ChatsPanel";
 
 const Chat = () => {
   return (
-    <div className="page page--with-sidebar">
+    <div className="page">
       <Sidebar />
       <ChatsPanel />
       <div className="page__main">

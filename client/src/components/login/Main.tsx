@@ -1,17 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import DefaultInput from "../shared/DefaultInput";
 import { ErrorMessage, Form, Formik } from "formik";
+import React from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { Link, Redirect } from "react-router-dom";
+import { RootStateType } from "../../redux/rootReducer";
+import { fetchUser } from "../../redux/user/actions";
+import { LoginValuesType } from "../../types";
 import { loginSchema } from "../../utils/validation/login";
+import DefaultInput from "../shared/DefaultInput";
 
 const Main = () => {
+  const dispatch = useDispatch();
+  const isLoading = useSelector((state: RootStateType) => state.user.isLoading);
+  const loginErrorMessage = useSelector(
+    (state: RootStateType) => state.user.errorMessage
+  );
+
+  const userId = useSelector((state: RootStateType) => state.user.id);
+  if (userId) {
+    return <Redirect to="/chat" />;
+  }
+
   return (
     <div className="login">
-      <Formik
+      <Formik<LoginValuesType>
         initialValues={{ email: "", password: "" }}
         validationSchema={loginSchema}
-        onSubmit={(values) => {
-          console.log(values);
+        onSubmit={({ email, password }) => {
+          dispatch(fetchUser({ email, password }));
         }}
       >
         {({ getFieldProps }) => (
@@ -42,9 +57,16 @@ const Main = () => {
               <input type="checkbox" id="remember-me__input" />
               <label htmlFor="remember-me__input">Remember me</label>
             </div>
-            <button type="submit" className="auth__submit login__submit">
-              Sign in
+            <button
+              disabled={isLoading}
+              type="submit"
+              className="auth__submit login__submit"
+            >
+              {isLoading ? "Logging in..." : "Sign in"}
             </button>
+            {loginErrorMessage && (
+              <span className="auth__error auth__error--login">{loginErrorMessage}</span>
+            )}
           </Form>
         )}
       </Formik>

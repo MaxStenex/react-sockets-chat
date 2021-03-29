@@ -1,14 +1,22 @@
+import React from "react";
+import { NavLink } from "react-router-dom";
 import ArchiveSvg from "../../images/archive.svg";
 import ChatSvg from "../../images/chat.svg";
+import DefaultUserImage from "../../images/defaultUserImage.png";
 import FriendsSvg from "../../images/friends.svg";
 import LogoSvg from "../../images/logo.svg";
 import NightModeSvg from "../../images/moon.svg";
 import FavoriteSvg from "../../images/star.svg";
-import DefaultUserImage from "../../images/defaultUserImage.png";
-
-import { NavLink } from "react-router-dom";
+import { OptionsTypes } from "../../types";
+import Options from "./Options/index";
+import Option from "./Options/Option";
 
 const Sidebar = () => {
+  const [isUserOptionsOpened, setIsUserOptionsOpened] = React.useState(false);
+  const toggleUserOptions = () => {
+    setIsUserOptionsOpened((prev) => !prev);
+  };
+
   return (
     <div className="sidebar">
       <div className="sidebar__main">
@@ -40,11 +48,21 @@ const Sidebar = () => {
           </ul>
         </nav>
       </div>
+
       <div className="sidebar__footer">
         <button className="sidebar__toggle-mode">
           <img src={NightModeSvg} alt="mode" />
         </button>
-        <button className="sidebar__user-photo">
+        {isUserOptionsOpened && (
+          <div className="sidebar__options">
+            <Options>
+              <Option type={OptionsTypes.DEFAULT} text="Edit profile" href="/" />
+              <Option type={OptionsTypes.DEFAULT} text="Profile" href="/" />
+              <Option type={OptionsTypes.DANGER} text="Logout" href="/" />
+            </Options>
+          </div>
+        )}
+        <button onClick={toggleUserOptions} className="sidebar__user-photo">
           <img src={DefaultUserImage} alt="profile" />
         </button>
       </div>
