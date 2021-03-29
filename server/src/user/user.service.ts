@@ -27,16 +27,13 @@ export class UserService {
       });
       await this.userRepository.save(user);
 
-      return { message: "successfully registered", statusCode: HttpStatus.CREATED };
+      return { message: "Successfully registered", statusCode: HttpStatus.CREATED };
     } catch (error) {
       // email already used
       if (error.code === "23505") {
-        return { message: "email already taken", statusCode: HttpStatus.BAD_REQUEST };
+        throw new HttpException("Email already exist", HttpStatus.BAD_REQUEST);
       }
-      return {
-        message: "something goes wrong",
-        statusCode: HttpStatus.INTERNAL_SERVER_ERROR,
-      };
+      throw new HttpException("Something goes wrong", HttpStatus.BAD_REQUEST);
     }
   }
 

@@ -66,6 +66,13 @@
     &--login {
       margin-top: 10px;
     }
+    &--register {
+      margin-top: 10px;
+    }
+  }
+  &__success {
+    margin-top: 10px;
+    color: green;
   }
   &__submit {
     padding: 7px 10px;

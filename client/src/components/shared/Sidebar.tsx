@@ -1,4 +1,5 @@
 import React from "react";
+import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import ArchiveSvg from "../../images/archive.svg";
 import ChatSvg from "../../images/chat.svg";
@@ -7,6 +8,7 @@ import FriendsSvg from "../../images/friends.svg";
 import LogoSvg from "../../images/logo.svg";
 import NightModeSvg from "../../images/moon.svg";
 import FavoriteSvg from "../../images/star.svg";
+import { logoutUser } from "../../redux/user/actions";
 import { OptionsTypes } from "../../types";
 import Options from "./Options/index";
 import Option from "./Options/Option";
@@ -16,6 +18,8 @@ const Sidebar = () => {
   const toggleUserOptions = () => {
     setIsUserOptionsOpened((prev) => !prev);
   };
+  const dispatch = useDispatch();
+  const onLogoutClick = () => dispatch(logoutUser());
 
   return (
     <div className="sidebar">
@@ -58,7 +62,12 @@ const Sidebar = () => {
             <Options>
               <Option type={OptionsTypes.DEFAULT} text="Edit profile" href="/" />
               <Option type={OptionsTypes.DEFAULT} text="Profile" href="/" />
-              <Option type={OptionsTypes.DANGER} text="Logout" href="/" />
+              <Option
+                onClick={onLogoutClick}
+                type={OptionsTypes.DANGER}
+                text="Logout"
+                href="/login"
+              />
             </Options>
           </div>
         )}

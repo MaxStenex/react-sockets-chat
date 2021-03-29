@@ -6,13 +6,15 @@ export enum UserActions {
   FETCH_USER_LOADING = "FETCH_USER_LOADING",
   FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS",
   FETCH_USER_ERROR = "FETCH_USER_ERROR",
+  LOGOUT_USER = "LOGOUT_USER",
 }
 
 export type UserActionsType =
   | FetchUserType
   | FetchUserSuccessType
   | FetchUserErrorType
-  | FetchUserLoadingType;
+  | FetchUserLoadingType
+  | LogoutUserType;
 
 export type FetchUserType = {
   type: UserActions.FETCH_USER;
@@ -63,3 +65,9 @@ export const fetchUserError = (errorMessage: string): FetchUserErrorType => ({
     errorMessage,
   },
 });
+
+type LogoutUserType = {
+  type: UserActions.LOGOUT_USER;
+};
+
+export const logoutUser = (): LogoutUserType => ({ type: UserActions.LOGOUT_USER });

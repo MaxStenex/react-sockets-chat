@@ -37,6 +37,9 @@ export const userReducer = (
       const { errorMessage } = action.payload;
       return { ...state, errorMessage, isLoading: false };
     }
+    case UserActions.LOGOUT_USER: {
+      return { ...state, ...initialState };
+    }
 
     default:
       return state;

@@ -29,38 +29,34 @@ const Main = () => {
           dispatch(fetchUser({ email, password }));
         }}
       >
-        {({ getFieldProps }) => (
-          <Form className="auth__form login__form">
-            <div className="auth__field login__field">
+        {({ getFieldProps, isValid }) => (
+          <Form className="auth__form">
+            <div className="auth__field">
               <DefaultInput
                 {...getFieldProps("email")}
                 placeholder="Email"
                 type="email"
-                className="auth__input login__input"
+                className="auth__input"
               />
               <ErrorMessage name="email">
-                {(msg) => <span className="auth__error login__error">{msg}</span>}
+                {(msg) => <span className="auth__error">{msg}</span>}
               </ErrorMessage>
             </div>
-            <div className="auth__field login__field">
+            <div className="auth__field">
               <DefaultInput
                 {...getFieldProps("password")}
                 placeholder="Password"
                 type="password"
-                className="auth__input login__input"
+                className="auth__input"
               />
               <ErrorMessage name="password">
-                {(msg) => <span className="auth__error login__error">{msg}</span>}
+                {(msg) => <span className="auth__error">{msg}</span>}
               </ErrorMessage>
             </div>
-            <div className="login__remember-me">
-              <input type="checkbox" id="remember-me__input" />
-              <label htmlFor="remember-me__input">Remember me</label>
-            </div>
             <button
-              disabled={isLoading}
+              disabled={isLoading || !isValid}
               type="submit"
-              className="auth__submit login__submit"
+              className="auth__submit"
             >
               {isLoading ? "Logging in..." : "Sign in"}
             </button>
@@ -71,7 +67,7 @@ const Main = () => {
         )}
       </Formik>
 
-      <div className="auth__footer login__footer">
+      <div className="auth__footer">
         <h3>Don`t have an account?</h3>
         <Link to="/register">Register now!</Link>
       </div>
