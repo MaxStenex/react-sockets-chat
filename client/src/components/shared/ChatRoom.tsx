@@ -2,6 +2,7 @@ import DefaultUserImage from "../../images/defaultUserImage.png";
 import AddSvg from "../../images/add.svg";
 import SendMessageSvg from "../../images/send.svg";
 import DefaultInput from "../shared/DefaultInput";
+import ButtonWithImage from "../shared/ButtonWithImage";
 
 const ChatRoom = () => {
   return (
@@ -13,9 +14,7 @@ const ChatRoom = () => {
             <div className="chat-room__username">Somebody Somebody</div>
           </div>
           <div className="chat-room__actions">
-            <button className="chat-room__action">
-              <img src={AddSvg} alt="" />
-            </button>
+            <ButtonWithImage src={AddSvg} className="chat-room__action" />
           </div>
         </header>
         <ul className="chat-room__messages">

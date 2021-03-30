@@ -22,21 +22,8 @@
   &__button {
     width: 46px;
     height: 36px;
-    padding: 10px 13px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 5px;
-    border: 1px solid #ccc;
     margin-left: 10px;
-    &:hover,
-    &:focus {
-      transition: 0.3s ease-in-out;
-      background-color: #ccc;
-    }
-    & img {
-      width: 100%;
-    }
+    padding: 10px 13px;
   }
   &__input {
     width: 100%;

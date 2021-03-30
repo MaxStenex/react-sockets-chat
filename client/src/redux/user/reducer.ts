@@ -12,7 +12,7 @@ export type UserStateType = UserInfoType & {
   isLoading: boolean;
 };
 
-const initialState: UserStateType = {
+export const initialState: UserStateType = {
   id: null,
   firstName: null,
   lastName: null,
@@ -30,8 +30,16 @@ export const userReducer = (
       return { ...state, errorMessage: null, isLoading: true };
     }
     case UserActions.FETCH_USER_SUCCESS: {
-      const { id, firstName, lastName } = action.payload.userInfo;
-      return { ...state, id, firstName, lastName, isLoading: false, errorMessage: null };
+      const { id, firstName, lastName, email } = action.payload.userInfo;
+      return {
+        ...state,
+        id,
+        firstName,
+        lastName,
+        email,
+        isLoading: false,
+        errorMessage: null,
+      };
     }
     case UserActions.FETCH_USER_ERROR: {
       const { errorMessage } = action.payload;

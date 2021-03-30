@@ -1,6 +1,6 @@
 import React from "react";
 import SearchPanel from "../shared/SearchPanel";
-import Button from "../shared/SearchPanel/Button";
+import ButtonWithImage from "../shared/ButtonWithImage";
 import Buttons from "../shared/SearchPanel/Buttons";
 import AddSvg from "../../images/add.svg";
 import LastMessages from "./LastMessages";
@@ -12,8 +12,8 @@ const ChatsPanel = () => {
       title="Chats"
       buttons={
         <Buttons>
-          <Button src={AddSvg} />
-          <Button src={AddSvg} />
+          <ButtonWithImage className="search-panel__button" src={AddSvg} />
+          <ButtonWithImage className="search-panel__button" src={AddSvg} />
         </Buttons>
       }
       input={

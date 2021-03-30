@@ -30,7 +30,7 @@ const Sidebar = () => {
         <nav className="navigation">
           <ul className="navigation__links">
             <li className="navigation__link">
-              <NavLink to="/chat" activeClassName="selected-link">
+              <NavLink to="/chats" activeClassName="selected-link">
                 <img src={ChatSvg} alt="chat" />
               </NavLink>
             </li>

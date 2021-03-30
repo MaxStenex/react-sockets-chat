@@ -4,12 +4,14 @@
 @import "./components/shared/Sidebar.scss";
 @import "./components/shared/SearchPanel.scss";
 @import "./components/chat/LastMessages.scss";
-@import "./components/chat/ChatRoom.scss";
+@import "./components/shared/ChatRoom.scss";
 @import "./components/shared/DefaultInput.scss";
 @import "./components/shared/AuthWhiteWrapper.scss";
 @import "./components/login/Main.scss";
 @import "./components/register/Main.scss";
 @import "./components/shared/Options.scss";
+@import "./components/shared/Profile.scss";
+@import "./components/shared/ButtonWithImage.scss";
 
 body {
   font-family: "Roboto", sans-serif;

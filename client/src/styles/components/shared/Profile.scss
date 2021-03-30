@@ -1,0 +1,53 @@
+.profile {
+  max-width: 350px;
+  border-left: 1px solid #ccc;
+  height: 100vh;
+  overflow-y: auto;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 23px 32px;
+    position: sticky;
+    top: 0;
+    right: 0;
+    background-color: #fff;
+  }
+  &__title {
+    font-weight: 700;
+    font-size: 23px;
+  }
+  &__close {
+    width: 46px;
+    height: 36px;
+    padding: 10px;
+  }
+  &__image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  &__fullname {
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 20px;
+  }
+  &__section {
+    padding: 0px 20px;
+    margin-bottom: 20px;
+    & h3 {
+      font-weight: 700;
+      font-size: 19px;
+      margin-bottom: 7px;
+    }
+    & p {
+      word-break: normal;
+      line-height: 1.15;
+    }
+  }
+}
