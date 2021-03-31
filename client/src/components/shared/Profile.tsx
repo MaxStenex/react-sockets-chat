@@ -1,8 +1,15 @@
+import { useSelector } from "react-redux";
 import CloseSvg from "../../images/close.svg";
 import DefaultUserPhoto from "../../images/defaultUserImage.png";
+import { RootStateType } from "../../redux/rootReducer";
 import ButtonWithImage from "./ButtonWithImage";
 
 const Profile = () => {
+  const isOpened = useSelector((state: RootStateType) => state.profile.isOpened);
+  if (!isOpened) {
+    return null;
+  }
+
   return (
     <section className="page__profile profile">
       <div className="profile__header">
