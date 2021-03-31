@@ -7,6 +7,7 @@ export enum UserActions {
   FETCH_USER_SUCCESS = "FETCH_USER_SUCCESS",
   FETCH_USER_ERROR = "FETCH_USER_ERROR",
   LOGOUT_USER = "LOGOUT_USER",
+  AUTH_WITH_COOKIE = "AUTH_WITH_COOKIE",
 }
 
 export type UserActionsType =
@@ -14,7 +15,8 @@ export type UserActionsType =
   | FetchUserSuccessType
   | FetchUserErrorType
   | FetchUserLoadingType
-  | LogoutUserType;
+  | LogoutUserType
+  | AuthUserWithCookie;
 
 export type FetchUserType = {
   type: UserActions.FETCH_USER;
@@ -71,3 +73,9 @@ type LogoutUserType = {
 };
 
 export const logoutUser = (): LogoutUserType => ({ type: UserActions.LOGOUT_USER });
+
+type AuthUserWithCookie = {
+  type: UserActions.AUTH_WITH_COOKIE;
+};
+
+export const authUserWithCookie = () => ({ type: UserActions.AUTH_WITH_COOKIE });

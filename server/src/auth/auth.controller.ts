@@ -1,4 +1,5 @@
-import { Body, Controller, Get, Post, Session, UseGuards } from "@nestjs/common";
+import { Body, Controller, Get, Post, Res, Session, UseGuards } from "@nestjs/common";
+import { Response } from "express";
 import { HttpResponse, SessionType, UserWithoutPasswordType } from "src/types";
 import { UserService } from "src/user/user.service";
 import { AuthGuard } from "./auth.guard";
@@ -21,6 +22,11 @@ export class AuthController {
     @Session() session: SessionType
   ): Promise<UserWithoutPasswordType> {
     return this.authService.login(loginUserDto, session);
+  }
+
+  @Post("logout")
+  async logout(@Res() res: Response, @Session() session: SessionType) {
+    return this.authService.logout(session, res);
   }
 
   @Get("me")

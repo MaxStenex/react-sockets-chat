@@ -6,6 +6,7 @@ import * as argon from "argon2";
 import { HttpResponse, SessionType, UserWithoutPasswordType } from "src/types";
 import { LoginUserDto } from "./dto/login-user.dto";
 import { RegisterUserDto } from "./dto/register-user.dto";
+import { Response } from "express";
 
 @Injectable()
 export class AuthService {
@@ -59,5 +60,13 @@ export class AuthService {
     session.userId = user.id;
 
     return { email, firstName: user.firstName, lastName: user.lastName, id: user.id };
+  }
+
+  async logout(session: SessionType, response: Response) {
+    session.destroy((err) => {
+      if (!err) {
+        response.clearCookie("sid");
+      }
+    });
   }
 }

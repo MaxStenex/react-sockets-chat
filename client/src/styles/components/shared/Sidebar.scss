@@ -57,8 +57,12 @@
       border-radius: 15px;
       display: flex;
       justify-content: center;
+      &:hover,
+      &:focus {
+        background-color: rgb(241, 241, 241);
+      }
       &.selected-link {
-        background-color: rgb(233, 233, 233);
+        background-color: rgb(221, 221, 221);
       }
       & img {
         max-width: 80%;

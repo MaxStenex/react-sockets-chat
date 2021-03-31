@@ -3,7 +3,6 @@
 
 @import "./components/shared/Sidebar.scss";
 @import "./components/shared/SearchPanel.scss";
-@import "./components/chat/LastMessages.scss";
 @import "./components/shared/ChatRoom.scss";
 @import "./components/shared/DefaultInput.scss";
 @import "./components/shared/AuthWhiteWrapper.scss";
@@ -14,6 +13,7 @@
 @import "./components/shared/ButtonWithImage.scss";
 
 body {
+  word-break: normal;
   font-family: "Roboto", sans-serif;
 }
 

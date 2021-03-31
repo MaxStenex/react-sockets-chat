@@ -1,6 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
+import { logout } from "../../api";
 import ArchiveSvg from "../../images/archive.svg";
 import ChatSvg from "../../images/chat.svg";
 import DefaultUserImage from "../../images/defaultUserImage.png";
@@ -19,7 +20,12 @@ const Sidebar = () => {
     setIsUserOptionsOpened((prev) => !prev);
   };
   const dispatch = useDispatch();
-  const onLogoutClick = () => dispatch(logoutUser());
+  const onLogoutClick = async () => {
+    try {
+      dispatch(logoutUser());
+      await logout();
+    } catch (error) {}
+  };
 
   return (
     <div className="sidebar">
