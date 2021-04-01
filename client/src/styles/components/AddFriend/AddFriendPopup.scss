@@ -1,0 +1,43 @@
+.add-friend {
+  &__title {
+    background-color: #d1ecf1;
+    padding: 10px 15px;
+    font-size: 15px;
+    color: rgb(2, 68, 129);
+    border-radius: 5px;
+    margin-bottom: 20px;
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+  }
+  &__field {
+  }
+  &__label {
+    margin-bottom: 7px;
+    margin-left: 5px;
+    display: block;
+    font-size: 15px;
+    color: rgb(80, 80, 80);
+  }
+  &__input {
+    width: 100%;
+  }
+  &__submit {
+    margin-top: 30px;
+    width: 80px;
+    padding: 7px 0px;
+    background-color: rgb(2, 68, 129);
+    border: 1px solid rgb(2, 68, 129);
+    color: #fff;
+    font-weight: 700;
+    border-radius: 5px;
+    align-self: flex-end;
+    &:hover,
+    &:focus {
+      color: rgb(2, 68, 129);
+      background-color: #fff;
+      transition: 0.3s;
+    }
+  }
+}

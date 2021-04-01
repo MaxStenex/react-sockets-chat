@@ -3,17 +3,22 @@ import ButtonWithImage from "../shared/ButtonWithImage";
 import DefaultInput from "../shared/DefaultInput";
 import SearchPanel from "../shared/SearchPanel";
 import Buttons from "../shared/SearchPanel/Buttons";
-import AddSvg from "../../images/add.svg";
+import AddFriendSvg from "../../images/add-friend.svg";
 import FriendList from "./FriendList";
+import { useHistory } from "react-router-dom";
 
 const FriendsPanel = () => {
+  const history = useHistory();
+  const openAddFriendPopup = () => {
+    history.push("/friends/add-friend");
+  };
+
   return (
     <SearchPanel
       title="Friends"
       buttons={
         <Buttons>
-          <ButtonWithImage src={AddSvg} />
-          <ButtonWithImage src={AddSvg} />
+          <ButtonWithImage onClick={openAddFriendPopup} src={AddFriendSvg} />
         </Buttons>
       }
       input={
