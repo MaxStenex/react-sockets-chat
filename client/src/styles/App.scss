@@ -1,18 +1,6 @@
 @import "./_normalize";
 @import "./_variables";
-
-@import "./components/shared/Sidebar.scss";
-@import "./components/shared/SearchPanel.scss";
-@import "./components/shared/ChatRoom.scss";
-@import "./components/shared/DefaultInput.scss";
-@import "./components/shared/AuthWhiteWrapper.scss";
-@import "./components/login/Main.scss";
-@import "./components/register/Main.scss";
-@import "./components/shared/Options.scss";
-@import "./components/shared/Profile.scss";
-@import "./components/shared/ButtonWithImage.scss";
-@import "./components/shared/Popup.scss";
-@import "./components/AddFriend/AddFriendPopup.scss";
+@import "./_imports";
 
 body {
   word-break: normal;

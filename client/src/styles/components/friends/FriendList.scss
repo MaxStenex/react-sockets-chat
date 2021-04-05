@@ -1,0 +1,28 @@
+.friend-list {
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__filter-btn {
+    border-right: 1px solid #ccc;
+    padding: 10px 30px;
+    flex: 50%;
+    font-size: 15px;
+    height: 100%;
+    border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    &--active {
+      background-color: #ccc;
+    }
+    &:hover {
+      &:not(.friend-list__filter-btn--active) {
+        background-color: rgb(231, 231, 231);
+        transition: 0.3s;
+      }
+    }
+    &:last-child {
+      border-right: none;
+    }
+  }
+}
