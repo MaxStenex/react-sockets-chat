@@ -62,6 +62,17 @@ export class AuthService {
     return { email, firstName: user.firstName, lastName: user.lastName, id: user.id };
   }
 
+  async authMe(userId: number): Promise<UserWithoutPasswordType> {
+    try {
+      const { id, firstName, lastName, email } = await this.userRepository.findOne({
+        where: { id: userId },
+      });
+      return { id, firstName, lastName, email };
+    } catch (error) {
+      throw new HttpException("Not authenticated", HttpStatus.UNAUTHORIZED);
+    }
+  }
+
   async logout(session: SessionType, response: Response) {
     session.destroy((err) => {
       if (!err) {

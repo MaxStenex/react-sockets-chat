@@ -2,7 +2,9 @@ import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
 import { User } from "./user/user.entity";
 import { UserModule } from "./user/user.module";
-import { AuthModule } from './auth/auth.module';
+import { AuthModule } from "./auth/auth.module";
+import { FriendshipModule } from "./friendship/friendship.module";
+import { Friendship } from "./friendship/friendship.entity";
 
 @Module({
   imports: [
@@ -13,11 +15,12 @@ import { AuthModule } from './auth/auth.module';
       username: "postgres",
       password: "postgres",
       database: "react_sockets",
-      entities: [User],
+      entities: [User, Friendship],
       synchronize: true,
     }),
     UserModule,
     AuthModule,
+    FriendshipModule,
   ],
   controllers: [],
   providers: [],
