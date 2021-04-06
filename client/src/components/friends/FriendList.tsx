@@ -1,35 +1,36 @@
 import { useEffect, useState } from "react";
 import { getUserFriendships } from "../../api";
 import DefaultUserPhoto from "../../images/defaultUserImage.png";
-import { FriendshipType } from "../../types";
+import { FriendshipType, FriendshipTypes } from "../../types";
 import UserCard from "../shared/SearchPanel/UserCard";
 
-enum FriendListFilters {
+enum FriendFilters {
   ALL = "All",
-  REQUESSTS = "Requests",
+  REQUESTS = "Requests",
 }
 
 const filters = [
   {
     id: 1,
-    type: FriendListFilters.ALL,
-    isActive: true,
+    type: FriendFilters.ALL,
+    text: "All",
   },
   {
     id: 2,
-    type: FriendListFilters.REQUESSTS,
-    isActive: false,
+    type: FriendFilters.REQUESTS,
+    text: "Requests",
   },
 ];
 
 const FriendList = () => {
   const [friendships, setFriendships] = useState<FriendshipType[]>([]);
+  const [filteredFriendships, setFilteredFriendships] = useState<FriendshipType[]>([]);
+  const [filter, setFilter] = useState(FriendFilters.ALL);
 
   useEffect(() => {
     const fetchUserFriendships = async () => {
       try {
         const { data } = await getUserFriendships();
-
         setFriendships(
           data.map((i: any) => ({
             id: i.id,
@@ -45,6 +46,16 @@ const FriendList = () => {
     };
     fetchUserFriendships();
   }, []);
+  useEffect(() => {
+    setFilteredFriendships(
+      friendships.filter((f) => {
+        if (filter === FriendFilters.REQUESTS) {
+          return f.status === FriendshipTypes.REQUESTED;
+        }
+        return f;
+      })
+    );
+  }, [filter, friendships]);
 
   return (
     <div className="friend-list">
@@ -53,16 +64,17 @@ const FriendList = () => {
           <button
             key={f.id}
             className={`friend-list__filter-btn ${
-              f.isActive && "friend-list__filter-btn--active"
+              f.type === filter && "friend-list__filter-btn--active"
             }`}
+            onClick={() => setFilter(f.type)}
           >
-            {f.type}
+            {f.text}
           </button>
         ))}
       </div>
       {friendships.length > 0 && (
         <ul>
-          {friendships.map((f) => (
+          {filteredFriendships.map((f) => (
             <UserCard
               key={f.id}
               imageSrc={DefaultUserPhoto}

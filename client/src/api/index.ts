@@ -26,3 +26,7 @@ export const requestFriendship = (email: string) => {
 export const getUserFriendships = () => {
   return instance.get("/user/friendships");
 };
+
+export const getUserProfile = (id: number) => {
+  return instance.get(`/user/profile/${id}`);
+};

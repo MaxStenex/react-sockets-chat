@@ -1,5 +1,5 @@
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../../api";
 import ArchiveSvg from "../../images/archive.svg";
@@ -9,22 +9,34 @@ import FriendsSvg from "../../images/friends.svg";
 import LogoSvg from "../../images/logo.svg";
 import NightModeSvg from "../../images/moon.svg";
 import FavoriteSvg from "../../images/star.svg";
+import { openProfile } from "../../redux/profile/actions";
+import { RootStateType } from "../../redux/rootReducer";
 import { logoutUser } from "../../redux/user/actions";
 import { OptionsTypes } from "../../types";
 import Options from "./Options/index";
 import Option from "./Options/Option";
+import { useHistory } from "react-router-dom";
 
 const Sidebar = () => {
   const [isUserOptionsOpened, setIsUserOptionsOpened] = React.useState(false);
+  const dispatch = useDispatch();
+  const userId = useSelector((state: RootStateType) => state.user.id);
+  const history = useHistory();
+
   const toggleUserOptions = () => {
     setIsUserOptionsOpened((prev) => !prev);
   };
-  const dispatch = useDispatch();
   const onLogoutClick = async () => {
     try {
       dispatch(logoutUser());
       await logout();
+      history.push("/login");
     } catch (error) {}
+  };
+  const openUserProfile = () => {
+    if (userId) {
+      dispatch(openProfile(userId));
+    }
   };
 
   return (
@@ -66,14 +78,13 @@ const Sidebar = () => {
         {isUserOptionsOpened && (
           <div className="sidebar__options">
             <Options>
-              <Option type={OptionsTypes.DEFAULT} text="Edit profile" href="/" />
-              <Option type={OptionsTypes.DEFAULT} text="Profile" href="/" />
+              <Option type={OptionsTypes.DEFAULT} text="Edit profile" />
               <Option
-                onClick={onLogoutClick}
-                type={OptionsTypes.DANGER}
-                text="Logout"
-                href="/login"
+                onClick={openUserProfile}
+                type={OptionsTypes.DEFAULT}
+                text="Profile"
               />
+              <Option onClick={onLogoutClick} type={OptionsTypes.DANGER} text="Logout" />
             </Options>
           </div>
         )}

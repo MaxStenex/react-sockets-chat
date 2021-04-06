@@ -1,4 +1,4 @@
-import { Post } from "@nestjs/common";
+import { Param, Post } from "@nestjs/common";
 import { Body, Controller, Get, UseGuards, Session } from "@nestjs/common";
 import { AuthGuard } from "src/auth/auth.guard";
 import { SessionType } from "src/types";
@@ -22,5 +22,11 @@ export class UserController {
     @Session() session: SessionType
   ) {
     return this.userService.createFriendship(session.userId, { email });
+  }
+
+  @UseGuards(AuthGuard)
+  @Get("/profile/:id")
+  async findOne(@Param() params) {
+    return this.userService.getProfileInfoById(parseInt(params.id));
   }
 }

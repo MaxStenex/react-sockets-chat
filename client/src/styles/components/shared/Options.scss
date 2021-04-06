@@ -5,7 +5,7 @@
   min-width: 135px;
   padding: 5px 0px;
   &__item {
-    & a {
+    & button {
       font-size: 15px;
       color: black;
       text-decoration: none;
@@ -13,6 +13,7 @@
       height: 100%;
       display: block;
       padding: 5px 10px;
+      text-align: start;
       &:hover,
       &:focus {
         transition: 0.3s;
@@ -21,7 +22,7 @@
     }
     &--danger {
       border-top: 1px solid #ccc;
-      & a {
+      & button {
         color: rgb(248, 91, 91);
       }
     }

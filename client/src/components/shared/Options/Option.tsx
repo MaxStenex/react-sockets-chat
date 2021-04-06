@@ -1,14 +1,12 @@
 import { OptionsTypes } from "../../../types";
-import { Link } from "react-router-dom";
 
 type Props = {
   type: OptionsTypes;
   text: string;
-  href: string;
   onClick?: () => void;
 };
 
-const Option: React.FC<Props> = ({ type, text, href, onClick }) => {
+const Option: React.FC<Props> = ({ type, text, onClick }) => {
   return (
     <li
       className={`options__item ${
@@ -16,7 +14,7 @@ const Option: React.FC<Props> = ({ type, text, href, onClick }) => {
       }`}
       onClick={onClick}
     >
-      <Link to={href}>{text}</Link>
+      <button>{text}</button>
     </li>
   );
 };

@@ -26,8 +26,8 @@ export type RegisterValuesType = {
 };
 
 export enum FriendshipTypes {
-  REQUESTED = "requested",
   ACCEPTED = "accepted",
+  REQUESTED = "requested",
 }
 
 export type FriendshipType = {
