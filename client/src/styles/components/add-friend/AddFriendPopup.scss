@@ -40,4 +40,18 @@
       transition: 0.3s;
     }
   }
+  &__error {
+    font-size: 14px;
+    color: red;
+    margin-top: 5px;
+    display: block;
+    margin-left: 5px;
+  }
+  &__success {
+    font-size: 14px;
+    color: green;
+    margin-top: 5px;
+    margin-left: 5px;
+    display: block;
+  }
 }

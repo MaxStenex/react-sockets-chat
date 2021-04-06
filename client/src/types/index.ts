@@ -24,3 +24,14 @@ export type RegisterValuesType = {
   email: string;
   password: string;
 };
+
+export enum FriendshipTypes {
+  REQUESTED = "requested",
+  ACCEPTED = "accepted",
+}
+
+export type FriendshipType = {
+  id: number;
+  status: FriendshipTypes;
+  user: { id: number; firstName: string; lastName: string };
+};

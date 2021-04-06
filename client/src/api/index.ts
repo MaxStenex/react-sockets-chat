@@ -18,3 +18,11 @@ export const authUserWithCookie = () => {
 export const logout = () => {
   return instance.post("/auth/logout");
 };
+
+export const requestFriendship = (email: string) => {
+  return instance.post("/user/create-friendship", { email });
+};
+
+export const getUserFriendships = () => {
+  return instance.get("/user/friendships");
+};

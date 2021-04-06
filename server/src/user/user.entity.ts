@@ -18,6 +18,6 @@ export class User {
   @Column()
   password: string;
 
-  @OneToMany(() => Friendship, (friendship) => friendship.userOne && friendship.userTwo)
+  @OneToMany(() => Friendship, (friendship) => friendship.userOne || friendship.userTwo)
   friendships: Friendship[];
 }

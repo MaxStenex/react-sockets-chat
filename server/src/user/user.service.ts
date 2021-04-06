@@ -13,20 +13,28 @@ export class UserService {
     @InjectRepository(Friendship) private friendshipRepository: Repository<Friendship>
   ) {}
 
-  async getUserFriendshipsById(userId: number): Promise<UserWithoutPasswordType[]> {
-    const friendships = await this.userRepository
-      .createQueryBuilder("user")
-      .innerJoin("user.friendships", "friendship")
-      .where(`friendship.userOneId = :id`, { id: userId })
-      .orWhere(`friendship.userTwoId = :id`, { id: userId })
-      .getMany();
+  async getUserFriendshipsById(userId: number) {
+    const friendships: Friendship[] = [];
 
-    return friendships.map((f) => ({
-      id: f.id,
-      firstName: f.firstName,
-      lastName: f.lastName,
-      email: f.email,
-    }));
+    const ifUserOne = await this.friendshipRepository.find({
+      where: { userOne: { id: userId } },
+      relations: ["userTwo"],
+    });
+    const ifUserTwo = await this.friendshipRepository.find({
+      where: { userTwo: { id: userId } },
+      relations: ["userOne"],
+    });
+    friendships.push(...ifUserOne);
+    friendships.push(...ifUserTwo);
+
+    return friendships.map((f) => {
+      const user = f.userOne || f.userTwo;
+      return {
+        id: f.id,
+        status: f.status,
+        user: { id: user.id, firstName: user.firstName, lastName: user.lastName },
+      };
+    });
   }
 
   async createFriendship(
