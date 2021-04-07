@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { logout } from "../../api";
 import ArchiveSvg from "../../images/archive.svg";
 import ChatSvg from "../../images/chat.svg";
@@ -15,7 +15,6 @@ import { logoutUser } from "../../redux/user/actions";
 import { OptionsTypes } from "../../types";
 import Options from "./Options/index";
 import Option from "./Options/Option";
-import { useHistory } from "react-router-dom";
 
 const Sidebar = () => {
   const [isUserOptionsOpened, setIsUserOptionsOpened] = React.useState(false);
@@ -36,6 +35,7 @@ const Sidebar = () => {
   const openUserProfile = () => {
     if (userId) {
       dispatch(openProfile(userId));
+      setIsUserOptionsOpened(false);
     }
   };
 
@@ -77,7 +77,7 @@ const Sidebar = () => {
         </button>
         {isUserOptionsOpened && (
           <div className="sidebar__options">
-            <Options>
+            <Options closeOptions={() => setIsUserOptionsOpened(false)}>
               <Option type={OptionsTypes.DEFAULT} text="Edit profile" />
               <Option
                 onClick={openUserProfile}

@@ -21,6 +21,7 @@ const ChatsPanel = () => {
           placeholder="Search messages..."
           className="search-panel__input"
           type="text"
+          autoFocus
         />
       }
       main={<LastMessages />}

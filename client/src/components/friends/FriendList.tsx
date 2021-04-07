@@ -22,7 +22,11 @@ const filters = [
   },
 ];
 
-const FriendList = () => {
+type Props = {
+  friendNameFilter: string;
+};
+
+const FriendList: React.FC<Props> = ({ friendNameFilter }) => {
   const [friendships, setFriendships] = useState<FriendshipType[]>([]);
   const [filteredFriendships, setFilteredFriendships] = useState<FriendshipType[]>([]);
   const [filter, setFilter] = useState(FriendFilters.ALL);
@@ -49,13 +53,17 @@ const FriendList = () => {
   useEffect(() => {
     setFilteredFriendships(
       friendships.filter((f) => {
+        const userFullName = f.user.firstName + " " + f.user.lastName;
         if (filter === FriendFilters.REQUESTS) {
-          return f.status === FriendshipTypes.REQUESTED;
+          return (
+            f.status === FriendshipTypes.REQUESTED &&
+            userFullName.includes(friendNameFilter)
+          );
         }
-        return f;
+        return userFullName.includes(friendNameFilter);
       })
     );
-  }, [filter, friendships]);
+  }, [filter, friendships, friendNameFilter]);
 
   return (
     <div className="friend-list">
@@ -74,14 +82,21 @@ const FriendList = () => {
       </div>
       {friendships.length > 0 && (
         <ul>
-          {filteredFriendships.map((f) => (
-            <UserCard
-              key={f.id}
-              imageSrc={DefaultUserPhoto}
-              fullname={`${f.user.firstName + f.user.lastName}`}
-              textSnippet="Somebody short about"
-            />
-          ))}
+          {filteredFriendships.map((f) => {
+            let userFullName = f.user.firstName + " " + f.user.lastName;
+            if (userFullName.length > 18) {
+              userFullName = userFullName.slice(0, 18) + "...";
+            }
+
+            return (
+              <UserCard
+                key={f.id}
+                imageSrc={DefaultUserPhoto}
+                fullname={userFullName}
+                textSnippet="Somebody short about"
+              />
+            );
+          })}
         </ul>
       )}
     </div>
