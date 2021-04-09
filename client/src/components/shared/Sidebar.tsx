@@ -1,6 +1,6 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, useHistory } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { logout } from "../../api";
 import ArchiveSvg from "../../images/archive.svg";
 import ChatSvg from "../../images/chat.svg";
@@ -20,7 +20,6 @@ const Sidebar = () => {
   const [isUserOptionsOpened, setIsUserOptionsOpened] = React.useState(false);
   const dispatch = useDispatch();
   const userId = useSelector((state: RootStateType) => state.user.id);
-  const history = useHistory();
 
   const toggleUserOptions = () => {
     setIsUserOptionsOpened((prev) => !prev);
@@ -29,7 +28,6 @@ const Sidebar = () => {
     try {
       dispatch(logoutUser());
       await logout();
-      history.push("/login");
     } catch (error) {}
   };
   const openUserProfile = () => {

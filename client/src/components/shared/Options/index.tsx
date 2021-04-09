@@ -8,6 +8,9 @@ const Options: React.FC<Props> = ({ children, closeOptions }) => {
   const optionsListRef = useRef<HTMLUListElement>(null);
   useEffect(() => {
     const closeOptionsHandler = (evt: any) => {
+      if (!optionsListRef.current) {
+        return;
+      }
       if (!evt.path.includes(optionsListRef.current)) {
         closeOptions();
       }

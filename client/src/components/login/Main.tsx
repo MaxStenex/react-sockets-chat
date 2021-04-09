@@ -17,7 +17,7 @@ const Main = () => {
 
   const userId = useSelector((state: RootStateType) => state.user.id);
   if (userId) {
-    return <Redirect to="/chat" />;
+    return <Redirect to="/chats" />;
   }
 
   return (
