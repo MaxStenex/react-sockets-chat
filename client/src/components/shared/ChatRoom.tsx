@@ -1,10 +1,29 @@
-import DefaultUserImage from "../../images/defaultUserImage.png";
+import { useEffect, useState } from "react";
+import io, { Socket } from "socket.io-client";
 import AddSvg from "../../images/add.svg";
+import DefaultUserImage from "../../images/defaultUserImage.png";
 import SendMessageSvg from "../../images/send.svg";
-import DefaultInput from "../shared/DefaultInput";
 import ButtonWithImage from "../shared/ButtonWithImage";
+import DefaultInput from "../shared/DefaultInput";
+
+let socket: typeof Socket;
 
 const ChatRoom = () => {
+  const [messageText, setMessageText] = useState("");
+
+  const sendMessage = () => {
+    socket.emit("messageToServer", { data: messageText });
+    setMessageText("");
+  };
+
+  useEffect(() => {
+    socket = io("http://localhost:4000");
+
+    socket.on("messageToClient", (data: any) => {
+      console.log(data);
+    });
+  }, []);
+
   return (
     <div className="chat-room">
       <div className="chat-room__wrapper">
@@ -45,8 +64,12 @@ const ChatRoom = () => {
           placeholder="Write a message..."
           type="text"
           className="chat-room__input"
+          value={messageText}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setMessageText(e.target.value)
+          }
         />
-        <button className="chat-room__send-message">
+        <button onClick={sendMessage} className="chat-room__send-message">
           <img src={SendMessageSvg} alt="send" />
         </button>
       </footer>

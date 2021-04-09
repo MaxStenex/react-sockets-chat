@@ -5,6 +5,8 @@ import { UserModule } from "./user/user.module";
 import { AuthModule } from "./auth/auth.module";
 import { FriendshipModule } from "./friendship/friendship.module";
 import { Friendship } from "./friendship/friendship.entity";
+import { MessageModule } from "./message/message.module";
+import { Message } from "./message/message.entity";
 
 @Module({
   imports: [
@@ -15,14 +17,14 @@ import { Friendship } from "./friendship/friendship.entity";
       username: "postgres",
       password: "postgres",
       database: "react_sockets",
-      entities: [User, Friendship],
+      entities: [User, Friendship, Message],
       synchronize: true,
     }),
     UserModule,
     AuthModule,
     FriendshipModule,
+    MessageModule,
   ],
   controllers: [],
-  providers: [],
 })
 export class AppModule {}
