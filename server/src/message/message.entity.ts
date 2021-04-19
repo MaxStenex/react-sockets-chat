@@ -5,7 +5,6 @@ import {
   ManyToOne,
   Column,
   CreateDateColumn,
-  OneToMany,
 } from "typeorm";
 
 @Entity()
@@ -16,7 +15,7 @@ export class Message {
   @Column()
   text: string;
 
-  @OneToMany(() => User, (user) => user.sendedMessages)
+  @ManyToOne(() => User, (user) => user.sendedMessages)
   fromUser: User;
 
   @ManyToOne(() => User, (user) => user.acceptedMessages)

@@ -30,3 +30,7 @@ export const getUserFriendships = () => {
 export const getUserProfile = (id: number) => {
   return instance.get(`/user/profile/${id}`);
 };
+
+export const getMessages = (chatRoomId: number) => {
+  return instance.get(`/message/all/${chatRoomId}`);
+};

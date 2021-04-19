@@ -25,7 +25,7 @@ const App = () => {
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-        <Route path="/" component={Login} />
+        <Route path="/" component={() => <Redirect to="/login" />} />
       </Switch>
     );
   }

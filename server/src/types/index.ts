@@ -16,3 +16,11 @@ export type UserWithoutPasswordType = {
 export type SessionType = Session & {
   userId?: number;
 };
+
+export type MessageType = {
+  id: number;
+  text: string;
+  createdAt: string;
+  accepterId: number;
+  senderId: number;
+};

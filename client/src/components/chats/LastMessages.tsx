@@ -6,6 +6,7 @@ const LastMessages = () => {
   return (
     <ul>
       <UserCard
+        userId={8}
         imageSrc={DefaultUserImage}
         fullname="Somebody Somebody"
         textSnippet="Whats up, how are you?"

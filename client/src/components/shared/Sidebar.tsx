@@ -2,13 +2,11 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
 import { logout } from "../../api";
-import ArchiveSvg from "../../images/archive.svg";
 import ChatSvg from "../../images/chat.svg";
 import DefaultUserImage from "../../images/defaultUserImage.png";
 import FriendsSvg from "../../images/friends.svg";
 import LogoSvg from "../../images/logo.svg";
 import NightModeSvg from "../../images/moon.svg";
-import FavoriteSvg from "../../images/star.svg";
 import { openProfile } from "../../redux/profile/actions";
 import { RootStateType } from "../../redux/rootReducer";
 import { logoutUser } from "../../redux/user/actions";
@@ -53,16 +51,6 @@ const Sidebar = () => {
             <li className="navigation__link">
               <NavLink to="/friends" activeClassName="selected-link">
                 <img src={FriendsSvg} alt="friends" />
-              </NavLink>
-            </li>
-            <li className="navigation__link">
-              <NavLink to="/favorite" activeClassName="selected-link">
-                <img src={FavoriteSvg} alt="favorite" />
-              </NavLink>
-            </li>
-            <li className="navigation__link">
-              <NavLink to="/archive" activeClassName="selected-link">
-                <img src={ArchiveSvg} alt="archive" />
               </NavLink>
             </li>
           </ul>

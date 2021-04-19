@@ -90,6 +90,7 @@ const FriendList: React.FC<Props> = ({ friendNameFilter }) => {
 
             return (
               <UserCard
+                userId={f.user.id}
                 key={f.id}
                 imageSrc={DefaultUserPhoto}
                 fullname={userFullName}

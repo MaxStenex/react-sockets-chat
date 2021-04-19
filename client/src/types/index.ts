@@ -35,3 +35,11 @@ export type FriendshipType = {
   status: FriendshipTypes;
   user: { id: number; firstName: string; lastName: string };
 };
+
+export type MessageType = {
+  id: number;
+  senderId: number;
+  accepterId: number;
+  text: string;
+  createdAt: string;
+};
